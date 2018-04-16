@@ -1,0 +1,58 @@
+{
+  "name": "vue-directive-clickout",
+  "version": "0.0.1-alpha",
+  "author": "github.com/linusborg",
+  "private": true,
+  "description": "A directive to catch clicks outside of an element, compatible with Vue 2.0 only",
+  "keywords": [
+    "directive",
+    "Vue.js"
+  ],
+  "license": "MIT",
+  "main": "dist/vue-directive-clickout.cjs.js",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/linusborg/vue-directive-clickout",
+  "bugs": "https://github.com/linusborg/vue-directive-clickout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linusborg/vue-directive-clickout.git"
+  },
+  "scripts": {
+    "clean": "rm -rf dist .tmp",
+    "dev": "webpack-dev-server --inline --hot --no-info --config scripts/webpack.config.example.js",
+    "build": "run-p build:cjs build:dev build:prod",
+    "build:cjs": "rollup -c scripts/rollup.config.js --environment BUILD:cjs",
+    "build:dev": "rollup -c scripts/rollup.config.js --environment BUILD:dev",
+    "build:prod": "rollup -c scripts/rollup.config.js --environment BUILD:prod | uglifyjs -mc warnings=false --comments -o dist/vue-directive-clickout.min.js",
+    "build:example": "webpack --config scripts/webpack.config.example.js",
+    "flow": "flow check",
+    "lint": "eslint --fix \"@(src|scripts)/**/*.js\"",
+    "release": "run-s lint flow test clean build"
+  },
+  "peerDependencies": {
+    "vue": ">= 2.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.28.11",
+    "eslint": "^3.0.0",
+    "eslint-plugin-html": "^1.5.3",
+    "glob": "^7.0.3",
+    "rollup": "^0.36.0",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-vue": "^2.2.3",
+    "uglifyjs": "^2.4.10",
+    "vue": "^2.5.16",
+    "vue-loader": "^14.2.2",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dashboard": "^0.1.8",
+    "webpack-dev-server": "^3.1.3"
+  }
+}
